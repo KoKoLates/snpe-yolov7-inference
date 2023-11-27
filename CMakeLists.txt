@@ -15,10 +15,10 @@ message(STATUS "SNPE library: ${SNPE_LIBRARY_DIR}")
 
 find_package(OpenCV 4.8.0 REQUIRED)
 
-include_directories{
+include_directories(
     ${SNPE_INCLUDE_DIR}
     ${OpenCV_INCLUDE_DIRS}
-}
+)
 
 set(SOURCES main.cpp)
 add_executable(${PROJECT_NAME} ${SOURCES})
