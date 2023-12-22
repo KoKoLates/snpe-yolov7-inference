@@ -16,13 +16,6 @@ struct Object {
     float confidence = -1.f;
 };
 
-struct Config {
-    cv::Size frame;
-    cv::Size target;
-    int classes = -1;
-    const std::string model_path;
-};
-
 class Detector {
 public:
     Detector() {}
