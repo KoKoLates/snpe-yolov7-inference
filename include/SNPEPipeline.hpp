@@ -13,13 +13,14 @@
 #include "DlSystem/ITensorFactory.hpp"
 #include "DlContainer/IDlContainer.hpp"
 
+namespace snpe {
+
 class SNPEPipeline {
 public:
     SNPEPipeline();
-    ~SNPEPipeline();
 
     bool init(const std::string &model_path);
-    bool is_init() { return m_snpe != nullptr; }
+    bool isInit() { return m_snpe.get(); }
 
     void loadInputTensor(std::vector<float> &input_vec);
     void getOutputTensor(std::vector<float> &output_vec);
@@ -27,11 +28,15 @@ public:
     bool execute();
 
 private:
-    zdl::DlSystem::Runtime_t m_runtime;
-    zdl::DlSystem::TensorMap m_input_map, m_output_map;
-    
+    std::vector<float> m_output;
+    zdl::DlSystem::Runtime_t m_runtim;
+
     std::unique_ptr<zdl::SNPE::SNPE> m_snpe;
     std::unique_ptr<zdl::DlContainer::IDlContainer> m_container;
+    std::unique_ptr<zdl::DlSystem::ITensor> m_input_tensor;
 };
+
+}
+
 
 #endif // SNPE_PIPELINE_HPP_
