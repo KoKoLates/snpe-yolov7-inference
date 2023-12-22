@@ -1,0 +1,8 @@
+{
+    "pipeline-config": {
+        "input": "udpsrc port=11024 ! application/x-rtp, media=(string)video, encoding-name=(string)H264, payload=(int)96 ! rtph264depay ! h264parse ! avdec_h264 ! videoconvert ! appsink",
+        "output": "appsrc ! videoconvert ! x264enc speed-preset=ultrafast tune=zerolatency ! h264parse ! rtph264pay config-interval=1 pt=96 ! udpsink host=192.168.50.111 port=11024",
+        "width": 1280,
+        "height": 720
+    }
+}
