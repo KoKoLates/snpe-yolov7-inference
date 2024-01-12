@@ -7,7 +7,7 @@
 
 class JsonReader {
 public:
-    JsonConfigReader(const std::string& filePath): input(filePath) {
+    JsonReader(const std::string& filePath): input(filePath) {
         if (!input.is_open()) {
             throw std::runtime_error("Failed to open configure file");
         }
