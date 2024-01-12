@@ -4,5 +4,8 @@
         "output": "appsrc ! videoconvert ! x264enc speed-preset=ultrafast tune=zerolatency ! h264parse ! rtph264pay config-interval=1 pt=96 ! udpsink host=192.168.50.111 port=11024",
         "width": 1280,
         "height": 720
+    },
+    "model": {
+        "path": "/root/trip2-snpe/yolov7_tiny.dlc"
     }
 }
