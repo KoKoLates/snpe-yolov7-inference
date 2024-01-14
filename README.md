@@ -6,14 +6,14 @@ To minimize the inference time cost, we just reduce the input image size and det
 
 ![image](./images/qualcomm_snpe_workflow.png)
 
-For realtime application on drone, we create a multi-threading processing pipeline, one receive the image from gstreamer caps and convert it into opencv format (`cv::Mat`) and push into a buffer queue we designed, the other one just pop the image out and inference the image and then transmit the processed image to the indicated ground station.
+For realtime application on drone, we create a multi-threading processing pipeline, one threading just keep receiving the image from gstreamer caps and convert it into opencv format (`cv::Mat`) and then just push it into a buffer queue that we designed. The other threading in other hand, popping the image out and inference the image with Qualcomm SNPE container and then transmit the processed image to the indicated ground station.
 
 ![image](./images/processing.png)
 
 ## 2. Quick Start
 1. Setup Qualcomm `SNPE` software develop kit
-2. Configure the GStreamer pipeline and model container path in [`config.json`](./cfg/config.json)
-3. Build the project
+2. Configure the GStreamer pipeline and model container path in [`config.json`](./cfg/config.json). You could test the pipeline is portable first, and then apply it into `VidepPipeline`.
+3. Build the project with CMake.
     * `$ mkdir build && cd build`
     * `$ cmake ..`
     * `$ make`
