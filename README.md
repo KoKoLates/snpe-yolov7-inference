@@ -11,9 +11,9 @@ For realtime application on drone, we create a multi-threading processing pipeli
 ![image](./images/processing.png)
 
 ## 2. Quick Start
-1. Setup Qualcomm `SNPE` software develop kit
-2. Configure the GStreamer pipeline and model container path in [`config.json`](./cfg/config.json). You could test the pipeline is portable first, and then apply it into `VidepPipeline`.
-3. Build the project with CMake.
+1. Setup the Qualcomm `SNPE` software develop kit environment on the inference device. Here, I'm using snpe version `1.68.0`, and primarily testing on the [Qualcomm RB5 development kit](https://www.qualcomm.com/developer/hardware/robotics-rb5-development-kit).
+2. Configure the GStreamer pipeline and model container path in [`config.json`](./cfg/config.json). Remember to install the GStreamer packages properly. You could test the pipeline is portable first, and then apply it into `VidepPipeline`.
+3. Build the project with cmake under the build folder.
     * `$ mkdir build && cd build`
     * `$ cmake ..`
     * `$ make`
